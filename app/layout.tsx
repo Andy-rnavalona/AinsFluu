@@ -34,13 +34,13 @@ export default function RootLayout({
         <SidebarProvider
           style={
             {
-              "--sidebar-width": "14rem",
-              "--sidebar-width-mobile": "20rem",
+              "--sidebar-width": "12rem",
+              "--sidebar-width-mobile": "12rem",
             } as React.CSSProperties
           }
         >
           <AppSidebar />
-          <main className="p-5">
+          <main className="p-5 w-full">
             <SidebarTrigger />
             {children}
           </main>

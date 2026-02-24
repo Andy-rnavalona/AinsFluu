@@ -11,6 +11,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { LayoutDashboard } from "lucide-react";
+import Link from "next/link";
 
 export function AppSidebar() {
   return (
@@ -27,8 +28,10 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <LayoutDashboard /> Dashboard
+                <SidebarMenuButton asChild>
+                  <Link href="/dashboard">
+                    <LayoutDashboard /> Dashboard
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
