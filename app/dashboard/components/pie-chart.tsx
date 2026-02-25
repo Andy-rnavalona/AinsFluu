@@ -56,7 +56,7 @@ const chartConfig = {
 
 export function ChartPieDonut() {
   return (
-    <Card className="flex flex-col shadow-none text-xs rounded-sm">
+    <Card className="flex flex-col shadow-none text-xs rounded-sm border-0">
       <CardHeader className="items-center pb-0">
         <CardTitle>Pie Chart - Donut</CardTitle>
         <CardDescription>January - June 2024</CardDescription>

@@ -36,11 +36,12 @@ export default function RootLayout({
             {
               "--sidebar-width": "12rem",
               "--sidebar-width-mobile": "12rem",
+              background: "bg-gray-100",
             } as React.CSSProperties
           }
         >
           <AppSidebar />
-          <main className="p-5 w-full">
+          <main className="p-5 w-full space-y-5">
             <SidebarTrigger />
             {children}
           </main>
