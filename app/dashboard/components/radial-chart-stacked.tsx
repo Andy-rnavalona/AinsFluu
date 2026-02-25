@@ -37,8 +37,10 @@ export function ChartRadialStacked() {
   return (
     <Card className="flex flex-col shadow-none text-xs rounded-sm bg-transparent">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Radial Chart - Stacked</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>Anomalie</CardTitle>
+        <CardDescription className="text-xs">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo error
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-1 items-center pb-0">
         <ChartContainer
@@ -73,7 +75,7 @@ export function ChartRadialStacked() {
                           y={(viewBox.cy || 0) + 4}
                           className="fill-muted-foreground"
                         >
-                          Visitors
+                          Lines
                         </tspan>
                       </text>
                     );
