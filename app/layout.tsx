@@ -41,7 +41,7 @@ export default function RootLayout({
           }
         >
           <AppSidebar />
-          <main className="p-5 w-full space-y-5">
+          <main className="p-5 w-full space-y-2">
             <SidebarTrigger />
             {children}
           </main>
