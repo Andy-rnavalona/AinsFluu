@@ -1,7 +1,7 @@
-import ChartExample from "./components/chart-data";
 import DashboardGrid from "./components/card-layout";
 import { ChartRadialStacked } from "./components/radial-chart-stacked";
 import CardAnomalie from "./components/card-anomalie";
+import { ChartAreaInteractive } from "./components/area-chart";
 
 export default function Dashboard() {
   return (
@@ -10,7 +10,7 @@ export default function Dashboard() {
         <DashboardGrid />
         <div className="grid grid-cols-4">
           <div className="col-span-4">
-            <ChartExample />
+            <ChartAreaInteractive />
           </div>
         </div>
       </div>
