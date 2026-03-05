@@ -28,10 +28,23 @@ import { useRef, useState } from "react";
 import { ChartPieDonut } from "./components/pie-chart";
 import { DataTable } from "./components/payements/data-table";
 import { columns, payments } from "./components/payements/columns";
+import { useUploadExcelFile } from "../query/dashboard/dashboard";
 
 export default function Dashboard() {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [file, setFile] = useState<File | null>(null);
+  const { mutateAsync } = useUploadExcelFile();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleFileUpload = async (file: File) => {
+    try {
+      await mutateAsync({ file });
+    } catch {
+      // Handle error (e.g., show an error message)
+    }
+  };
+
   return (
     <div className="flex flex-col gap-5">
       <div className="flex justify-between gap-4 items-center">
@@ -42,12 +55,13 @@ export default function Dashboard() {
           </span>
         </div>
         <div>
-          <Dialog>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button
                 variant="default"
                 size={"sm"}
                 className="cursor-pointer p-0"
+                onClick={() => setIsDialogOpen(true)}
               >
                 <Plus className="w-4 h-4" />
                 <span className="text-xs font-normal">Analyze</span>
@@ -86,6 +100,7 @@ export default function Dashboard() {
                       const file = e.target.files?.[0];
                       if (file) {
                         setFileName(file.name);
+                        setFile(file);
                       }
                     }}
                   />
@@ -111,7 +126,17 @@ export default function Dashboard() {
                     <span className="text-xs font-normal">Cancel</span>
                   </Button>
                 </DialogClose>
-                <Button size={"sm"} type="submit">
+                <Button
+                  size={"sm"}
+                  type="submit"
+                  disabled={!file}
+                  onClick={() => {
+                    if (file) {
+                      handleFileUpload(file);
+                      setIsDialogOpen(false);
+                    }
+                  }}
+                >
                   <span className="text-xs font-normal">Save changes</span>
                 </Button>
               </DialogFooter>
